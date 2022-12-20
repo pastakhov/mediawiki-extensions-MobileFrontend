@@ -245,8 +245,9 @@ class MobileFormatter extends HtmlFormatter {
 			list( $headings, $subheadings ) = $this->getHeadings( $s );
 			if ( $headings ) {
 				$subsections = [];
+				$sn = $sectionNumber; // Prevents an infinite loop when the headers cannot be collapsed (headers placed inside a html element)
 				$this->makeSections( $doc, $headings, $transformOptions, $s, $sectionNumber, $subsections );
-				if ( $subsections ) {
+				if ( $subsections && $sn != $sectionNumber ) {
 					$this->makeSectionsForSubheadings( $doc, $subsections, $transformOptions, $sectionNumber );
 				}
 			}
