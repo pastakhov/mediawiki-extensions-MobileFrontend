@@ -241,6 +241,7 @@ class MobileFormatter extends HtmlFormatter {
 	 * @return void
 	 */
 	public function makeSectionsForSubheadings( DOMDocument $doc, array $sections, array $transformOptions, int &$sectionNumber ) {
+		$transformOptions['images'] = false; // In other case the images processed several times
 		foreach ( $sections as $s ) {
 			list( $headings, $subheadings ) = $this->getHeadings( $s );
 			if ( $headings ) {
